@@ -74,6 +74,18 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+
+            <ThemedView style={styles.stepContainer}>
+        <Link href="/stack/home">
+          <Link.Trigger>
+            <ThemedText type="subtitle">Ir al Stack Navigation</ThemedText>
+          </Link.Trigger>
+        </Link>
+        <ThemedText>
+          Toca aquí para ir a la pantalla Home del Stack Navigation
+        </ThemedText>
+      </ThemedView>
+
     </ParallaxScrollView>
   );
 }

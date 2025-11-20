@@ -1,50 +1,126 @@
-# Welcome to your Expo app 👋
+# MiAppWithStack - React Native Expo App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Una aplicación móvil desarrollada con **React Native** y **Expo**, implementando **Stack Navigation** para la navegación entre pantallas.
 
-## Get started
+## 📋 Requisitos Previos
 
-1. Install dependencies
+Antes de comenzar, asegúrate de tener instalado:
 
-   ```bash
-   npm install
-   ```
+- **Node.js** (v16 o superior) - [Descargar](https://nodejs.org/)
+- **npm** o **yarn** (generalmente viene con Node.js)
 
-2. Start the app
 
-   ```bash
-   npx expo start
-   ```
+## 📱 Ejecutar la aplicación
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### En desarrollo local
 
 ```bash
-npm run reset-project
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Se abrirá una interfaz interactiva en la terminal donde podrás:
+- Presionar **`i`** para abrir en iOS Simulator
+- Presionar **`a`** para abrir en Android Emulator
+- Presionar **`w`** para abrir en navegador web
+- Escanear el código QR con la app **Expo Go** en tu dispositivo móvil
 
-## Learn more
+### En Android
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npm run android
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### En iOS
 
-## Join the community
+```bash
+npm run ios
+```
 
-Join our community of developers creating universal apps.
+### En Web
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npm run web
+```
+
+## 🏗️ Estructura del Proyecto
+
+```
+MiAppWithStack/
+├── app/
+│   ├── _layout.tsx           # Navegación principal
+│   ├── modal.tsx             # Pantalla modal
+│   ├── (tabs)/               # Navegación por pestañas
+│   │   ├── _layout.tsx
+│   │   ├── index.tsx
+│   │   └── explore.tsx
+│   └── stack/                # Stack Navigation
+│       ├── _layout.tsx       # Configuración del stack
+│       ├── home.tsx          # Pantalla Home
+│       └── details.tsx       # Pantalla Details
+├── components/               # Componentes reutilizables
+├── constants/                # Constantes (tema, colores)
+├── hooks/                    # Custom hooks
+├── assets/                   # Imágenes y recursos
+└── package.json
+```
+
+## 🧭 Navegación con Stack
+
+### Stack Navigation
+
+La aplicación utiliza **Stack Navigation** en la carpeta `app/stack`:
+
+- **Home Screen** (`app/stack/home.tsx`): Pantalla principal
+- **Details Screen** (`app/stack/details.tsx`): Pantalla de detalles
+
+#### Navegar hacia adelante
+
+```typescript
+import { router } from "expo-router";
+
+<Button
+  title="Ir a Details"
+  onPress={() => router.push("/stack/details")}
+/>
+```
+
+#### Navegar hacia atrás
+
+```typescript
+import { router } from "expo-router";
+
+<Button
+  title="Volver"
+  onPress={() => router.back()}
+/>
+```
+
+## 📦 Dependencias Principales
+
+- **expo-router**: Enrutamiento basado en archivos
+- **react-navigation**: Navegación avanzada
+- **react-native-reanimated**: Animaciones suaves
+- **expo-symbols**: Iconos nativos
+- **expo-image**: Carga optimizada de imágenes
+
+## 🎨 Temas y Estilos
+
+La aplicación soporta **modo claro y oscuro automáticamente**. Los colores se definen en:
+
+```typescript
+// constants/theme.ts
+Colors.light  // Colores para modo claro
+Colors.dark   // Colores para modo oscuro
+```
+
+## 🔧 Scripts Disponibles
+
+```bash
+npx expo start             # Inicia el servidor de desarrollo
+npm run android            # Ejecutar en Android Emulator
+npm run ios                # Ejecutar en iOS Simulator
+npm run web                # Ejecutar en navegador web
+npm run lint               # Ejecutar ESLint
+npm run reset-project      # Resetear el proyecto a estado inicial
+```
+
